@@ -1,16 +1,16 @@
 package med.voll.api.models;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import med.voll.api.dto.EnderecoDTO;
 
 @Embeddable
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Endereco {
+    @NotBlank(message = "Logradouro é obrigatório")
     private String logradouro;
     private String bairro;
     private String cep;
@@ -19,7 +19,13 @@ public class Endereco {
     private String cidade;
     private String uf;
 
+    // Construtor padrão necessário para o JPA
+    public Endereco() {
+        // Deixe vazio
+    }
+
     public Endereco(EnderecoDTO endereco) {
+        this.logradouro = endereco.logradouro();
         this.bairro = endereco.bairro();
         this.cep = endereco.cep();
         this.uf = endereco.uf();
