@@ -1,7 +1,9 @@
 package med.voll.api.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
+import med.voll.api.dto.AtualizarMedicoDTO;
 import med.voll.api.dto.CadastroMedicoDTO;
 
 @Table(name = "medicos")
@@ -18,6 +20,10 @@ public class Medico {
     private String email;
     private String telefone;
     private String crm;
+
+    public Long getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;
@@ -52,5 +58,20 @@ public class Medico {
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
+    }
+
+    public void atualizarInformacoes(AtualizarMedicoDTO dados) {
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.email() != null){
+            this.email = dados.email();
+        }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco() != null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
     }
 }

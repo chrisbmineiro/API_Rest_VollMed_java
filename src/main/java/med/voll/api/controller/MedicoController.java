@@ -1,6 +1,8 @@
 package med.voll.api.controller;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import med.voll.api.dto.AtualizarMedicoDTO;
 import med.voll.api.dto.CadastroMedicoDTO;
 import med.voll.api.dto.ListagemMedicosDTO;
 import med.voll.api.models.Medico;
@@ -22,12 +24,19 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void cadastrarMedico(@RequestBody CadastroMedicoDTO dados){
+    public void cadastrarMedico(@RequestBody @Valid CadastroMedicoDTO dados){
         repository.save(new Medico(dados));
     }
 
     @GetMapping
     public Page<ListagemMedicosDTO> listarMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
         return repository.findAll(paginacao).map(ListagemMedicosDTO::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarMedico(@RequestBody @Valid AtualizarMedicoDTO dados){
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
     }
 }
