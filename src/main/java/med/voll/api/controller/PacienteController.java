@@ -29,7 +29,7 @@ public class PacienteController {
 
     @GetMapping
     public Page<ListagemPacientesDTO> listarPacientes(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(ListagemPacientesDTO::new);
+        return repository.findAllByAtivoTrue(paginacao).map(ListagemPacientesDTO::new);
     }
 
     @PutMapping
@@ -39,7 +39,11 @@ public class PacienteController {
         paciente.atualizarInformacoes(dados);
     }
 
-    public void excluirPaciente(){
-
+    // mudar o atributo ativo para false
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluirPaciente(@PathVariable Long id){
+        var paciente = repository.getReferenceById(id);
+        paciente.excluir();
     }
 }
