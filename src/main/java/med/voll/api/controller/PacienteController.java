@@ -38,4 +38,8 @@ public class PacienteController {
         var paciente = repository.getReferenceById(dados.id());
         paciente.atualizarInformacoes(dados);
     }
+
+    public void excluirPaciente(){
+
+    }
 }
