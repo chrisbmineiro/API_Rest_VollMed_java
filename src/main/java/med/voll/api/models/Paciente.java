@@ -1,18 +1,14 @@
 package med.voll.api.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import med.voll.api.dto.CadastroPacienteDTO;
 
-@Getter
-@EqualsAndHashCode(of = "id")
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "Paciente")
 @Table(name = "pacientes")
+@Setter
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Paciente {
 
     @Id
@@ -23,6 +19,22 @@ public class Paciente {
     private String email;
     private String cpf;
     private String telefone;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public Paciente(){
+        // Construtor padrão
+    }
 
     @Embedded
     private Endereco endereco;
