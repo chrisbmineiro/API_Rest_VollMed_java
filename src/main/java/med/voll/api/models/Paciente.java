@@ -1,7 +1,9 @@
 package med.voll.api.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
+import med.voll.api.dto.AtualizarPacienteDTO;
 import med.voll.api.dto.CadastroPacienteDTO;
 
 @Entity(name = "Paciente")
@@ -19,6 +21,10 @@ public class Paciente {
     private String email;
     private String cpf;
     private String telefone;
+
+    public Long getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;
@@ -47,4 +53,15 @@ public class Paciente {
         this.endereco = new Endereco(dados.endereco());
     }
 
+    public void atualizarInformacoes(AtualizarPacienteDTO dados) {
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco() != null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
 }
