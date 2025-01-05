@@ -1,16 +1,12 @@
 package med.voll.api.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import med.voll.api.dto.CadastroMedicoDTO;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
-@Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Medico {
@@ -22,6 +18,26 @@ public class Medico {
     private String email;
     private String telefone;
     private String crm;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public Medico() {
+        // Construtor padrão vazio
+    }
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
