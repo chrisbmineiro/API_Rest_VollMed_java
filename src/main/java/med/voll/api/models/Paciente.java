@@ -43,6 +43,18 @@ public class Paciente {
         return cpf;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
     public Paciente(){
         // Construtor padrão
     }

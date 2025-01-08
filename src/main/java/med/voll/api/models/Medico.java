@@ -41,12 +41,20 @@ public class Medico {
         return email;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
     public String getCrm() {
         return crm;
     }
 
     public Especialidade getEspecialidade() {
         return especialidade;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
     }
 
     public Medico() {
