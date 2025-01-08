@@ -49,14 +49,6 @@ public class Medico {
         return especialidade;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
     public Medico() {
         // Construtor padrão vazio
     }

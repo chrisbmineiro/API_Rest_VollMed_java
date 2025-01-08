@@ -9,6 +9,7 @@ import lombok.Setter;
 import med.voll.api.dto.EnderecoDTO;
 
 @Embeddable
+@Getter
 @Setter
 @AllArgsConstructor
 public class Endereco {
@@ -22,34 +23,6 @@ public class Endereco {
     private String uf;
     public Endereco(){
         // Constructor padrão
-    }
-
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public String getUf() {
-        return uf;
     }
 
     public Endereco(EnderecoDTO endereco) {
