@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -52,6 +53,7 @@ public class MedicoController {
     // mudar o atributo ativo para false
     @DeleteMapping("/{id}")
     @Transactional
+    @Secured("ROLE_ADMIN")
     public ResponseEntity excluirMedico(@PathVariable Long id){
         var medico = repository.getReferenceById(id);
         medico.excluir();
