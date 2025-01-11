@@ -4,13 +4,15 @@ import med.voll.api.dto.AgendamentoConsultaDTO;
 import med.voll.api.exception.ValidacaoException;
 import med.voll.api.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidarMedicoAtivo {
+@Component
+public class ValidarMedicoAtivo implements ValidadorAgendamentoDeConsulta{
 
     @Autowired
     private MedicoRepository medicoRepository;
 
-    public void validarMedicoAtivo(AgendamentoConsultaDTO dados){
+    public void validarAgendamentoDeConsulta(AgendamentoConsultaDTO dados){
         if (dados.idMedico() == null){
             return;
         }
