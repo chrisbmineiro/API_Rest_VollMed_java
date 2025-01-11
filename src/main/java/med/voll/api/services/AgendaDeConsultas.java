@@ -1,6 +1,5 @@
 package med.voll.api.services;
 
-import jakarta.validation.Valid;
 import med.voll.api.dto.AgendamentoConsultaDTO;
 import med.voll.api.dto.CancelamentoConsultaDTO;
 import med.voll.api.exception.ValidacaoException;
