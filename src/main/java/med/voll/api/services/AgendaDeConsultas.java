@@ -1,6 +1,8 @@
 package med.voll.api.services;
 
+import jakarta.validation.Valid;
 import med.voll.api.dto.AgendamentoConsultaDTO;
+import med.voll.api.dto.CancelamentoConsultaDTO;
 import med.voll.api.exception.ValidacaoException;
 import med.voll.api.models.Consulta;
 import med.voll.api.models.Medico;
@@ -47,5 +49,14 @@ public class AgendaDeConsultas {
         }
 
         return medicoRepository.escolherMedicoAleatorioComAgendaLivre(dados.especialidade(), dados.data());
+    }
+
+    public void cancelarConsulta(CancelamentoConsultaDTO dados) {
+        if (!consultaRepository.existsById(dados.idConsulta())){
+            throw new ValidacaoException("Consulta não encontrada");
+        }
+
+        var consulta = consultaRepository.getReferenceById(dados.idConsulta());
+        consulta.cancelar(dados.motivo());
     }
 }
