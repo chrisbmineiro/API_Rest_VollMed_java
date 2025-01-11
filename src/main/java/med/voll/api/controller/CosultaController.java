@@ -24,8 +24,8 @@ public class CosultaController {
     @Transactional
     public ResponseEntity agendarConsulta(@RequestBody @Valid AgendamentoConsultaDTO dados){
         // Agendar consulta
-        agendaDeConsultas.agendarConsulta(dados);
-        return ResponseEntity.ok(new DetalhamentoConsultaDTO(null,null,null,null));
+        var dto = agendaDeConsultas.agendarConsulta(dados);
+        return ResponseEntity.ok(dto);
     }
 
     public ResponseEntity cancelarConsulta(@RequestBody @Valid CancelamentoConsultaDTO dados){

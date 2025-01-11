@@ -28,7 +28,6 @@ public class TratadorDeErros {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity tratarErro400(MethodArgumentNotValidException e){
         var errors = e.getFieldErrors();
-
         return ResponseEntity.badRequest().body(errors.stream().map(ErrorValidationDTO::new).toList());
     }
 
@@ -50,6 +49,11 @@ public class TratadorDeErros {
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity tratarErroAcessoNegado() {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado");
+    }
+
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity tratarErroRegraDeNegocio(ValidacaoException ex) {
+        return ResponseEntity.badRequest().body("Erro: " +ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)

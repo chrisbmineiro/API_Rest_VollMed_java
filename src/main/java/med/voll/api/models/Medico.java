@@ -1,7 +1,6 @@
 package med.voll.api.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import lombok.*;
 import med.voll.api.dto.AtualizarMedicoDTO;
 import med.voll.api.dto.CadastroMedicoDTO;
