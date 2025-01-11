@@ -1,10 +1,8 @@
 package med.voll.api.validations.cancelamento;
 
-import med.voll.api.dto.AgendamentoConsultaDTO;
-import med.voll.api.dto.CancelamentoConsultaDTO;
+import med.voll.api.dto.consultas.CancelamentoConsultaDTO;
 import med.voll.api.exception.ValidacaoException;
 import med.voll.api.repository.ConsultaRepository;
-import med.voll.api.validations.agendamento.ValidadorAgendamentoDeConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

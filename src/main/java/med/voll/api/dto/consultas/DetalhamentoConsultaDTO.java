@@ -1,4 +1,4 @@
-package med.voll.api.dto;
+package med.voll.api.dto.consultas;
 
 import med.voll.api.models.Consulta;
 

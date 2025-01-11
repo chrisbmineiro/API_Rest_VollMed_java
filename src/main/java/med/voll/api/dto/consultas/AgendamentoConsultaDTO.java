@@ -1,4 +1,4 @@
-package med.voll.api.dto;
+package med.voll.api.dto.consultas;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;

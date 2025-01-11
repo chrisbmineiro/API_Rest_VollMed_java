@@ -1,8 +1,8 @@
 package med.voll.api.services;
 
-import med.voll.api.dto.AgendamentoConsultaDTO;
-import med.voll.api.dto.CancelamentoConsultaDTO;
-import med.voll.api.dto.DetalhamentoConsultaDTO;
+import med.voll.api.dto.consultas.AgendamentoConsultaDTO;
+import med.voll.api.dto.consultas.CancelamentoConsultaDTO;
+import med.voll.api.dto.consultas.DetalhamentoConsultaDTO;
 import med.voll.api.exception.ValidacaoException;
 import med.voll.api.models.Consulta;
 import med.voll.api.models.Medico;

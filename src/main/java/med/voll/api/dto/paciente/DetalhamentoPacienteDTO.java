@@ -1,7 +1,6 @@
-package med.voll.api.dto;
+package med.voll.api.dto.paciente;
 
 import med.voll.api.models.Endereco;
-import med.voll.api.models.Especialidade;
 import med.voll.api.models.Paciente;
 
 public record DetalhamentoPacienteDTO(
