@@ -1,4 +1,4 @@
-package med.voll.api.validations;
+package med.voll.api.validations.agendamento;
 
 import med.voll.api.dto.AgendamentoConsultaDTO;
 import med.voll.api.exception.ValidacaoException;
@@ -17,7 +17,7 @@ public class ValidarMedicoConsultaMesmoHorario implements ValidadorAgendamentoDe
             return;
         }
 
-        var medicoJaTemConsulta = consultaRepository.existsByMedicoIdAndData(dados.idMedico(), dados.data());
+        var medicoJaTemConsulta = consultaRepository.existsByMedicoIdAndDataAndMotivoCancelamentoIsNull(dados.idMedico(), dados.data());
         if (medicoJaTemConsulta){
             throw new ValidacaoException("Médico já tem consulta marcada para este dia");
         }

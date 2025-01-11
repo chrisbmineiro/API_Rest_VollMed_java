@@ -9,7 +9,8 @@ import med.voll.api.models.Medico;
 import med.voll.api.repository.ConsultaRepository;
 import med.voll.api.repository.MedicoRepository;
 import med.voll.api.repository.PacienteRepository;
-import med.voll.api.validations.ValidadorAgendamentoDeConsulta;
+import med.voll.api.validations.agendamento.ValidadorAgendamentoDeConsulta;
+import med.voll.api.validations.cancelamento.ValidadorCancelamentoDeConsulta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,9 @@ public class AgendaDeConsultas {
 
     @Autowired
     private List<ValidadorAgendamentoDeConsulta> validadores;
+
+    @Autowired
+    private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
 
     // Agendar consulta
     public DetalhamentoConsultaDTO agendarConsulta(AgendamentoConsultaDTO dados){
@@ -68,6 +72,8 @@ public class AgendaDeConsultas {
         if (!consultaRepository.existsById(dados.idConsulta())){
             throw new ValidacaoException("Consulta não encontrada");
         }
+
+        validadoresCancelamento.forEach(v -> v.validarCancelamentoDeConsulta(dados));
 
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
         consulta.cancelar(dados.motivo());
