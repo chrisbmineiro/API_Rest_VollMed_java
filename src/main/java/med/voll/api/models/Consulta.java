@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 @Table(name = "consultas")
 @Entity(name = "Consulta")
-@Getter
-@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Consulta {
 
@@ -30,8 +28,13 @@ public class Consulta {
     @Enumerated(EnumType.STRING)
     private MotivoCancelamento motivoCancelamento;
 
+    @Enumerated(EnumType.STRING)
+    private StatusConsulta status;
+
+    // cancelar consulta
     public void cancelar(MotivoCancelamento motivo) {
         this.motivoCancelamento = motivo;
+        this.status = StatusConsulta.CANCELADA;
     }
 
     public Consulta(Long id, Medico medico, Paciente paciente, LocalDateTime data) {
@@ -39,6 +42,11 @@ public class Consulta {
         this.medico = medico;
         this.paciente = paciente;
         this.data = data;
+        this.status = StatusConsulta.AGENDADA;
+    }
+
+    public Consulta(){
+        // Construtor vazio
     }
 
     public Long getId() {
@@ -55,5 +63,13 @@ public class Consulta {
 
     public LocalDateTime getData() {
         return data;
+    }
+
+    public MotivoCancelamento getMotivoCancelamento() {
+        return motivoCancelamento;
+    }
+
+    public StatusConsulta getStatus() {
+        return status;
     }
 }
