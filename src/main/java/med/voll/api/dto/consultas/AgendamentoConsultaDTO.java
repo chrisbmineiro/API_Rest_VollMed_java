@@ -19,4 +19,7 @@ public record AgendamentoConsultaDTO(
 
         Especialidade especialidade
 ) {
+        public AgendamentoConsultaDTO(LocalDateTime of) {
+                this(null, null, of, null);
+        }
 }

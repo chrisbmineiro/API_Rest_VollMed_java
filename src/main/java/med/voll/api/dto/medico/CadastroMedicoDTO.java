@@ -20,7 +20,7 @@ public record CadastroMedicoDTO (
         String telefone,
 
         @NotBlank(message = "CRM é obrigatório")
-        @Pattern(regexp = "\\d{4,6}", message = "Formato do CRM é inválido")
+        @Pattern(regexp = "\\d{6}-\\d{2}/(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)", message = "O CRM deve estar no formato XXXXXX-XX/UF")
         String crm,
 
         @NotNull(message = "Especialidade é obrigatória")

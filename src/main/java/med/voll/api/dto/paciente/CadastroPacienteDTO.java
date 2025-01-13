@@ -14,6 +14,7 @@ public record CadastroPacienteDTO(
         @Email(message = "{email.invalido}")
         String email,
         @NotBlank(message = "{telefone.obrigatorio")
+        @Pattern(regexp = "^(\\(\\d{2}\\)|\\d{2})\\s?\\d{4,5}-?\\d{4}$")
         String telefone,
         @NotBlank(message = "{cpf.obrigatorio}")
         @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}", message = "{cpf.invalido}")
